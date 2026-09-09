@@ -327,6 +327,10 @@ const en = {
   "landing.f4d": "See income, expenses and net revenue across every shop at a glance.",
   "landing.pricing": "Simple yearly pricing",
   "landing.cta": "Start managing your business today",
+  "auth.google": "Continue with Google",
+  "auth.completeProfile": "Complete your profile",
+  "auth.completeProfileHint": "Add your username, WhatsApp number and area to unlock subscriptions.",
+  "sub.needProfile": "Complete your profile first (name, username, WhatsApp, area) before applying for a plan.",
 };
 
 const ar: Record<keyof typeof en, string> = {
@@ -645,6 +649,10 @@ const ar: Record<keyof typeof en, string> = {
   "landing.f4d": "شاهد المداخيل والمصاريف وصافي الإيرادات لكل المحلات في لمحة.",
   "landing.pricing": "أسعار سنوية بسيطة",
   "landing.cta": "ابدأ إدارة أعمالك اليوم",
+  "auth.google": "المتابعة بحساب Google",
+  "auth.completeProfile": "أكمل ملفك الشخصي",
+  "auth.completeProfileHint": "أضف اسم المستخدم ورقم واتساب والمنطقة لتفعيل الاشتراكات.",
+  "sub.needProfile": "أكمل ملفك الشخصي أولاً (الاسم، اسم المستخدم، واتساب، المنطقة) قبل طلب الاشتراك.",
 };
 
 const fr: Record<keyof typeof en, string> = {
@@ -968,6 +976,10 @@ const fr: Record<keyof typeof en, string> = {
   "landing.f4d": "Voyez recettes, dépenses et revenu net de toutes vos boutiques d'un coup d'œil.",
   "landing.pricing": "Tarifs annuels simples",
   "landing.cta": "Commencez à gérer votre activité dès aujourd'hui",
+  "auth.google": "Continuer avec Google",
+  "auth.completeProfile": "Complétez votre profil",
+  "auth.completeProfileHint": "Ajoutez votre nom d'utilisateur, WhatsApp et zone pour activer les abonnements.",
+  "sub.needProfile": "Complétez d'abord votre profil (nom, nom d'utilisateur, WhatsApp, zone) avant de demander un plan.",
 };
 
 export type TranslationKey = keyof typeof en;

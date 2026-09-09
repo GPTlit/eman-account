@@ -123,3 +123,19 @@ export function downloadCsv(filename: string, rows: Record<string, unknown>[]) {
   a.click();
   URL.revokeObjectURL(url);
 }
+
+export function profileComplete(profile: {
+  full_name?: string | null;
+  username?: string | null;
+  whatsapp?: string | null;
+  resident_area?: string | null;
+} | null): boolean {
+  if (!profile) return false;
+  const filled = (v?: string | null) => Boolean(v && v.trim().length > 1);
+  return (
+    filled(profile.full_name) &&
+    filled(profile.username) &&
+    filled(profile.whatsapp) &&
+    filled(profile.resident_area)
+  );
+}

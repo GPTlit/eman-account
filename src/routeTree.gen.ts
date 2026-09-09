@@ -16,6 +16,13 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
+import { Route as AuthenticatedWorkersRouteImport } from './routes/_authenticated/workers'
+import { Route as AuthenticatedShopsIndexRouteImport } from './routes/_authenticated/shops.index'
+import { Route as AuthenticatedShopsShopIdRouteImport } from './routes/_authenticated/shops.$shopId'
+import { Route as AuthenticatedTransactionsIndexRouteImport } from './routes/_authenticated/transactions.index'
+import { Route as AuthenticatedTransactionsTxIdRouteImport } from './routes/_authenticated/transactions.$txId'
+import { Route as AuthenticatedTransactionsNewRouteImport } from './routes/_authenticated/transactions.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -51,6 +58,46 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedWorkersRoute = AuthenticatedWorkersRouteImport.update({
+  id: '/workers',
+  path: '/workers',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedShopsIndexRoute = AuthenticatedShopsIndexRouteImport.update({
+  id: '/shops/',
+  path: '/shops/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedShopsShopIdRoute =
+  AuthenticatedShopsShopIdRouteImport.update({
+    id: '/shops/$shopId',
+    path: '/shops/$shopId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedTransactionsIndexRoute =
+  AuthenticatedTransactionsIndexRouteImport.update({
+    id: '/transactions/',
+    path: '/transactions/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedTransactionsTxIdRoute =
+  AuthenticatedTransactionsTxIdRouteImport.update({
+    id: '/transactions/$txId',
+    path: '/transactions/$txId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedTransactionsNewRoute =
+  AuthenticatedTransactionsNewRouteImport.update({
+    id: '/transactions/new',
+    path: '/transactions/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -59,6 +106,13 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/workers': typeof AuthenticatedWorkersRoute
+  '/shops/$shopId': typeof AuthenticatedShopsShopIdRoute
+  '/transactions/$txId': typeof AuthenticatedTransactionsTxIdRoute
+  '/transactions/new': typeof AuthenticatedTransactionsNewRoute
+  '/shops/': typeof AuthenticatedShopsIndexRoute
+  '/transactions/': typeof AuthenticatedTransactionsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -67,6 +121,13 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/workers': typeof AuthenticatedWorkersRoute
+  '/shops/$shopId': typeof AuthenticatedShopsShopIdRoute
+  '/transactions/$txId': typeof AuthenticatedTransactionsTxIdRoute
+  '/transactions/new': typeof AuthenticatedTransactionsNewRoute
+  '/shops': typeof AuthenticatedShopsIndexRoute
+  '/transactions': typeof AuthenticatedTransactionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,6 +138,13 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
+  '/_authenticated/workers': typeof AuthenticatedWorkersRoute
+  '/_authenticated/shops/$shopId': typeof AuthenticatedShopsShopIdRoute
+  '/_authenticated/transactions/$txId': typeof AuthenticatedTransactionsTxIdRoute
+  '/_authenticated/transactions/new': typeof AuthenticatedTransactionsNewRoute
+  '/_authenticated/shops/': typeof AuthenticatedShopsIndexRoute
+  '/_authenticated/transactions/': typeof AuthenticatedTransactionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -87,6 +155,13 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/register'
     | '/dashboard'
+    | '/notifications'
+    | '/workers'
+    | '/shops/$shopId'
+    | '/transactions/$txId'
+    | '/transactions/new'
+    | '/shops/'
+    | '/transactions/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -95,6 +170,13 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/register'
     | '/dashboard'
+    | '/notifications'
+    | '/workers'
+    | '/shops/$shopId'
+    | '/transactions/$txId'
+    | '/transactions/new'
+    | '/shops'
+    | '/transactions'
   id:
     | '__root__'
     | '/'
@@ -104,6 +186,13 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/register'
     | '/_authenticated/dashboard'
+    | '/_authenticated/notifications'
+    | '/_authenticated/workers'
+    | '/_authenticated/shops/$shopId'
+    | '/_authenticated/transactions/$txId'
+    | '/_authenticated/transactions/new'
+    | '/_authenticated/shops/'
+    | '/_authenticated/transactions/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -166,15 +255,78 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/workers': {
+      id: '/_authenticated/workers'
+      path: '/workers'
+      fullPath: '/workers'
+      preLoaderRoute: typeof AuthenticatedWorkersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/shops/': {
+      id: '/_authenticated/shops/'
+      path: '/shops'
+      fullPath: '/shops/'
+      preLoaderRoute: typeof AuthenticatedShopsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/shops/$shopId': {
+      id: '/_authenticated/shops/$shopId'
+      path: '/shops/$shopId'
+      fullPath: '/shops/$shopId'
+      preLoaderRoute: typeof AuthenticatedShopsShopIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/transactions/': {
+      id: '/_authenticated/transactions/'
+      path: '/transactions'
+      fullPath: '/transactions/'
+      preLoaderRoute: typeof AuthenticatedTransactionsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/transactions/$txId': {
+      id: '/_authenticated/transactions/$txId'
+      path: '/transactions/$txId'
+      fullPath: '/transactions/$txId'
+      preLoaderRoute: typeof AuthenticatedTransactionsTxIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/transactions/new': {
+      id: '/_authenticated/transactions/new'
+      path: '/transactions/new'
+      fullPath: '/transactions/new'
+      preLoaderRoute: typeof AuthenticatedTransactionsNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
+  AuthenticatedWorkersRoute: typeof AuthenticatedWorkersRoute
+  AuthenticatedShopsShopIdRoute: typeof AuthenticatedShopsShopIdRoute
+  AuthenticatedTransactionsTxIdRoute: typeof AuthenticatedTransactionsTxIdRoute
+  AuthenticatedTransactionsNewRoute: typeof AuthenticatedTransactionsNewRoute
+  AuthenticatedShopsIndexRoute: typeof AuthenticatedShopsIndexRoute
+  AuthenticatedTransactionsIndexRoute: typeof AuthenticatedTransactionsIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
+  AuthenticatedWorkersRoute: AuthenticatedWorkersRoute,
+  AuthenticatedShopsShopIdRoute: AuthenticatedShopsShopIdRoute,
+  AuthenticatedTransactionsTxIdRoute: AuthenticatedTransactionsTxIdRoute,
+  AuthenticatedTransactionsNewRoute: AuthenticatedTransactionsNewRoute,
+  AuthenticatedShopsIndexRoute: AuthenticatedShopsIndexRoute,
+  AuthenticatedTransactionsIndexRoute: AuthenticatedTransactionsIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
