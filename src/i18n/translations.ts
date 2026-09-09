@@ -978,8 +978,8 @@ const fr: Record<keyof typeof en, string> = {
   "landing.cta": "Commencez à gérer votre activité dès aujourd'hui",
   "auth.google": "Continuer avec Google",
   "auth.completeProfile": "Complétez votre profil",
-  "auth.completeProfileHint": "Ajoutez votre nom d"utilisateur, WhatsApp et zone pour activer les abonnements.",
-  "sub.needProfile": "Complétez d"abord votre profil (nom, nom d"utilisateur, WhatsApp, zone) avant de demander un plan.",
+  "auth.completeProfileHint": "Ajoutez votre nom d'utilisateur, WhatsApp et zone pour activer les abonnements.",
+  "sub.needProfile": "Complétez d'abord votre profil (nom, nom d'utilisateur, WhatsApp, zone) avant de demander un plan.",
 };
 
 export type TranslationKey = keyof typeof en;
