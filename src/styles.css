@@ -196,3 +196,59 @@
 @utility animate-rise {
   animation: eman-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* Light mode — same EMAN palette, inverted surfaces */
+html.light {
+  --background: oklch(0.985 0.003 200);
+  --foreground: oklch(0.2 0.01 200);
+
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.96 0.005 200);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.01 200);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.01 200);
+
+  --primary: oklch(0.6 0.16 152);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.95 0.006 200);
+  --secondary-foreground: oklch(0.22 0.01 200);
+
+  --muted: oklch(0.95 0.006 200);
+  --muted-foreground: oklch(0.48 0.012 210);
+
+  --accent: oklch(0.94 0.012 190);
+  --accent-foreground: oklch(0.22 0.01 200);
+
+  --destructive: oklch(0.58 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.6 0.16 152);
+  --success-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.68 0.14 80);
+  --warning-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.2 0.01 200 / 12%);
+  --input: oklch(0.2 0.01 200 / 16%);
+  --ring: oklch(0.6 0.16 152 / 45%);
+
+  --chart-1: oklch(0.6 0.16 152);
+  --chart-2: oklch(0.55 0.12 220);
+  --chart-3: oklch(0.62 0.13 195);
+  --chart-4: oklch(0.7 0.14 80);
+  --chart-5: oklch(0.58 0.2 25);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.2 0.01 200);
+  --sidebar-primary: oklch(0.6 0.16 152);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.95 0.006 200);
+  --sidebar-accent-foreground: oklch(0.22 0.01 200);
+  --sidebar-border: oklch(0.2 0.01 200 / 10%);
+
+  --gradient-teal: linear-gradient(160deg, oklch(0.86 0.06 220) 0%, oklch(0.9 0.05 190) 60%, oklch(0.93 0.04 180) 100%);
+  --gradient-green: linear-gradient(160deg, oklch(0.92 0.05 160) 0%, oklch(0.96 0.03 165) 100%);
+  --shadow-card: 0 8px 24px -14px oklch(0.2 0.02 200 / 35%);
+  --shadow-glow: 0 0 34px -14px oklch(0.6 0.16 152 / 40%);
+}
