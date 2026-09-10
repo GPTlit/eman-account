@@ -331,6 +331,19 @@ const en = {
   "auth.completeProfile": "Complete your profile",
   "auth.completeProfileHint": "Add your username, WhatsApp number and area to unlock subscriptions.",
   "sub.needProfile": "Complete your profile first (name, username, WhatsApp, area) before applying for a plan.",
+  "theme.appearance": "Appearance",
+  "theme.light": "Light",
+  "theme.dark": "Dark",
+  "sub.submitted": "Your subscription request was sent. We will review it shortly.",
+  "sub.needDocs": "Please attach your ID document and the payment receipt.",
+  "sub.apply": "Apply for this plan",
+  "reports.byShop": "By shop",
+  "reports.byType": "By transaction type",
+  "reports.byWorker": "By worker",
+  "reports.transactions": "Transactions",
+  "reports.download": "Download report (CSV)",
+  "settings.signOut": "Sign out of this device",
+  "profile.completeCta": "Complete profile",
 };
 
 const ar: Record<keyof typeof en, string> = {
@@ -653,6 +666,19 @@ const ar: Record<keyof typeof en, string> = {
   "auth.completeProfile": "أكمل ملفك الشخصي",
   "auth.completeProfileHint": "أضف اسم المستخدم ورقم واتساب والمنطقة لتفعيل الاشتراكات.",
   "sub.needProfile": "أكمل ملفك الشخصي أولاً (الاسم، اسم المستخدم، واتساب، المنطقة) قبل طلب الاشتراك.",
+  "theme.appearance": "المظهر",
+  "theme.light": "فاتح",
+  "theme.dark": "داكن",
+  "sub.submitted": "تم إرسال طلب الاشتراك. سنراجعه قريبًا.",
+  "sub.needDocs": "يرجى إرفاق وثيقة الهوية وصورة إيصال الدفع.",
+  "sub.apply": "تقديم طلب لهذه الخطة",
+  "reports.byShop": "حسب المحل",
+  "reports.byType": "حسب نوع المعاملة",
+  "reports.byWorker": "حسب العامل",
+  "reports.transactions": "المعاملات",
+  "reports.download": "تحميل التقرير (CSV)",
+  "settings.signOut": "تسجيل الخروج من هذا الجهاز",
+  "profile.completeCta": "أكمل ملفك الشخصي",
 };
 
 const fr: Record<keyof typeof en, string> = {
@@ -980,6 +1006,19 @@ const fr: Record<keyof typeof en, string> = {
   "auth.completeProfile": "Complétez votre profil",
   "auth.completeProfileHint": "Ajoutez votre nom d'utilisateur, WhatsApp et zone pour activer les abonnements.",
   "sub.needProfile": "Complétez d'abord votre profil (nom, nom d'utilisateur, WhatsApp, zone) avant de demander un plan.",
+  "theme.appearance": "Apparence",
+  "theme.light": "Clair",
+  "theme.dark": "Sombre",
+  "sub.submitted": "Votre demande d'abonnement a été envoyée. Nous l'examinerons bientôt.",
+  "sub.needDocs": "Veuillez joindre votre pièce d'identité et le reçu de paiement.",
+  "sub.apply": "Demander ce plan",
+  "reports.byShop": "Par boutique",
+  "reports.byType": "Par type de transaction",
+  "reports.byWorker": "Par employé",
+  "reports.transactions": "Transactions",
+  "reports.download": "Télécharger le rapport (CSV)",
+  "settings.signOut": "Se déconnecter de cet appareil",
+  "profile.completeCta": "Compléter le profil",
 };
 
 export type TranslationKey = keyof typeof en;
