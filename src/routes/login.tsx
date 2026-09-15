@@ -88,6 +88,12 @@ function LoginPage() {
               {busy ? t("common.loading") : t("auth.login")}
             </Button>
           </form>
+          <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground">
+            <span className="h-px flex-1 bg-border" />
+            <span>{t("common.or")}</span>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <GoogleButton />
           <div className="mt-4 flex items-center justify-between text-sm">
             <Link to="/forgot-password" className="text-muted-foreground hover:text-foreground">
               {t("auth.forgot")}
