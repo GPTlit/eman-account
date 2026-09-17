@@ -184,8 +184,24 @@ function AdminPage() {
     );
   }
 
-  function Users() {
+  function Users({ adminId }: { adminId: string }) {
+    const qc = useQueryClient();
     const [term, setTerm] = useState("");
+    const [granting, setGranting] = useState<string | null>(null);
+
+    async function grant(userId: string, plan: PlanId) {
+      setGranting(userId);
+      try {
+        await grantSubscription(adminId, userId, plan);
+        toast.success(t("admin.granted"));
+        void qc.invalidateQueries({ queryKey: ["admin-subs"] });
+      } catch (err) {
+        toast.error(err instanceof Error ? err.message : t("common.error"));
+      } finally {
+        setGranting(null);
+      }
+    }
+
     const { data, isLoading } = useQuery({
       queryKey: ["admin-users"],
       queryFn: async () => {
