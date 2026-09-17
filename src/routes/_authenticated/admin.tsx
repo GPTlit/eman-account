@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/i18n";
 import { useAuth } from "@/lib/auth";
 import { grantSubscription, notify } from "@/lib/api";
-import { formatDate, formatTime, type PlanId } from "@/lib/eman";
+import { PLANS, formatDate, formatTime, type PlanId } from "@/lib/eman";
 import { signedUrl } from "@/lib/storage";
 import { PageHeader, PlanBadge, StatusBadge } from "@/components/ui-kit";
 import { Button } from "@/components/ui/button";
