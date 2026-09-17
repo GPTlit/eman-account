@@ -53,10 +53,19 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
 
+const FALLBACK: I18nValue = {
+  locale: "ar",
+  dir: "rtl",
+  setLocale: () => {},
+  t: (key, vars) => {
+    let value = dictionaries.ar[key] ?? dictionaries.en[key] ?? String(key);
+    if (vars) for (const [k, v] of Object.entries(vars)) value = value.replaceAll(`{${k}}`, String(v));
+    return value;
+  },
+};
+
 export function useI18n() {
-  const ctx = useContext(I18nContext);
-  if (!ctx) throw new Error("useI18n must be used inside I18nProvider");
-  return ctx;
+  return useContext(I18nContext) ?? FALLBACK;
 }
 
 export { LOCALES };
