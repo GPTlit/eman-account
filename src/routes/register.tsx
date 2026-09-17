@@ -223,6 +223,13 @@ function RegisterPage() {
             </Button>
           </form>
 
+          <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground">
+            <span className="h-px flex-1 bg-border" />
+            <span>{t("common.or")}</span>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <GoogleButton />
+
           <p className="mt-4 text-sm text-muted-foreground">
             {t("auth.haveAccount")}{" "}
             <Link to="/login" className="text-primary">
