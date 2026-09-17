@@ -49,7 +49,7 @@ function AdminPage() {
           <Requests adminId={profile?.id ?? ""} />
         </TabsContent>
         <TabsContent value="users">
-          <Users />
+          <Users adminId={profile?.id ?? ""} />
         </TabsContent>
         <TabsContent value="subs">
           <ActiveSubs adminId={profile?.id ?? ""} />
