@@ -78,15 +78,11 @@ function SubscriptionPage() {
       toast.error(t("sub.needProfile"));
       return;
     }
-    if (!idDoc || !receipt) {
-      toast.error(t("sub.needDocs"));
-      return;
-    }
     setBusy(true);
     try {
       const [idPath, receiptPath] = await Promise.all([
-        uploadTo("documents", profile.id, idDoc),
-        uploadTo("receipts", profile.id, receipt),
+        idDoc ? uploadTo("documents", profile.id, idDoc) : Promise.resolve(null),
+        receipt ? uploadTo("documents", profile.id, receipt) : Promise.resolve(null),
       ]);
       const { error } = await supabase.from("subscription_requests").insert({
         owner_id: profile.id,
@@ -109,8 +105,8 @@ function SubscriptionPage() {
       setIdDoc(null);
       setReceipt(null);
       void qc.invalidateQueries({ queryKey: ["sub-requests", profile.id] });
-    } catch {
-      toast.error(t("common.error"));
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : t("common.error"));
     } finally {
       setBusy(false);
     }
@@ -241,9 +237,22 @@ function SubscriptionPage() {
                 onChange={(e) => setReceipt(e.target.files?.[0] ?? null)}
               />
             </div>
-            <p className="text-xs text-muted-foreground sm:col-span-2">{t("sub.docsNotice")}</p>
-            <Button type="submit" className="sm:col-span-2" disabled={busy}>
+            <p className="text-xs text-muted-foreground sm:col-span-2">
+              {t("sub.docsOptional")} {t("sub.docsNotice")}
+            </p>
+            <Button type="submit" disabled={busy}>
               {busy ? t("common.uploading") : t("sub.submit")}
+            </Button>
+            <Button asChild type="button" variant="outline">
+              <a
+                href={`https://wa.me/222${SUPPORT_WHATSAPP}?text=${encodeURIComponent(
+                  `EMAN — ${plan} plan\n${profile?.full_name ?? ""} (@${profile?.username ?? ""})\nPaid ${formatMoney(PLANS.find((p) => p.id === plan)?.price ?? 0, locale)} to ${PAYMENT_NUMBER}`,
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t("sub.sendWhatsapp")}
+              </a>
             </Button>
           </form>
         </section>

@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/i18n";
 import { useAuth } from "@/lib/auth";
 import { grantSubscription, notify } from "@/lib/api";
-import { formatDate, formatTime, type PlanId } from "@/lib/eman";
+import { PLANS, formatDate, formatTime, type PlanId } from "@/lib/eman";
 import { signedUrl } from "@/lib/storage";
 import { PageHeader, PlanBadge, StatusBadge } from "@/components/ui-kit";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,7 @@ function AdminPage() {
           <Requests adminId={profile?.id ?? ""} />
         </TabsContent>
         <TabsContent value="users">
-          <Users />
+          <Users adminId={profile?.id ?? ""} />
         </TabsContent>
         <TabsContent value="subs">
           <ActiveSubs adminId={profile?.id ?? ""} />
@@ -184,8 +184,24 @@ function AdminPage() {
     );
   }
 
-  function Users() {
+  function Users({ adminId }: { adminId: string }) {
+    const qc = useQueryClient();
     const [term, setTerm] = useState("");
+    const [granting, setGranting] = useState<string | null>(null);
+
+    async function grant(userId: string, plan: PlanId) {
+      setGranting(userId);
+      try {
+        await grantSubscription(adminId, userId, plan);
+        toast.success(t("admin.granted"));
+        void qc.invalidateQueries({ queryKey: ["admin-subs"] });
+      } catch (err) {
+        toast.error(err instanceof Error ? err.message : t("common.error"));
+      } finally {
+        setGranting(null);
+      }
+    }
+
     const { data, isLoading } = useQuery({
       queryKey: ["admin-users"],
       queryFn: async () => {
@@ -233,15 +249,29 @@ function AdminPage() {
                     {u.email ?? "—"} · {u.resident_area ?? "—"}
                   </p>
                 </div>
-                <span className="text-xs text-muted-foreground">
-                  {t(
-                    u.role === "admin"
-                      ? "profile.role.admin"
-                      : u.role === "owner"
-                        ? "profile.role.owner"
-                        : "profile.role.worker",
-                  )}
-                </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs text-muted-foreground">
+                    {t(
+                      u.role === "admin"
+                        ? "profile.role.admin"
+                        : u.role === "owner"
+                          ? "profile.role.owner"
+                          : "profile.role.worker",
+                    )}
+                  </span>
+                  {u.role !== "worker" &&
+                    PLANS.map((p) => (
+                      <Button
+                        key={p.id}
+                        size="sm"
+                        variant="outline"
+                        disabled={granting === u.id}
+                        onClick={() => void grant(u.id, p.id)}
+                      >
+                        {t("admin.grant")}: {t(p.nameKey)}
+                      </Button>
+                    ))}
+                </div>
               </li>
             ))}
           </ul>
