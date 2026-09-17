@@ -8,7 +8,7 @@ export type Profile = Tables<"profiles">;
 export type Subscription = Tables<"subscriptions">;
 
 export async function notify(userId: string, titleKey: string, body?: string, link?: string) {
-  await supabase.from("notifications").insert({ user_id: userId, title_key: titleKey, body, link });
+  await supabase.from("notifications").insert({ user_id: userId, title_key: titleKey, body: body ?? null, link: link ?? null });
 }
 
 export async function audit(
