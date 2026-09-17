@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { GoogleButton } from "@/components/GoogleButton";
 import { cn } from "@/lib/utils";
 import type { TranslationKey } from "@/i18n/translations";
 
@@ -221,6 +222,13 @@ function RegisterPage() {
               {busy ? t("common.loading") : t("auth.register")}
             </Button>
           </form>
+
+          <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground">
+            <span className="h-px flex-1 bg-border" />
+            <span>{t("common.or")}</span>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <GoogleButton />
 
           <p className="mt-4 text-sm text-muted-foreground">
             {t("auth.haveAccount")}{" "}

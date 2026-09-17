@@ -12,8 +12,8 @@ export function PageHeader({
   action,
 }: {
   title: string;
-  subtitle?: string;
-  action?: ReactNode;
+  subtitle?: string | undefined;
+  action?: ReactNode | undefined;
 }) {
   return (
     <header className="mb-6 flex flex-wrap items-end justify-between gap-4">
