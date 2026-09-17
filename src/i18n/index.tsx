@@ -20,7 +20,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     if (stored === "ar" || stored === "en" || stored === "fr") setLocaleState(stored);
   }, []);
 
-  const dir = locale === "ar" ? "rtl" : "ltr";
+  const dir: "rtl" | "ltr" = locale === "ar" ? "rtl" : "ltr";
 
   useEffect(() => {
     if (typeof document === "undefined") return;

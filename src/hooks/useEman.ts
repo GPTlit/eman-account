@@ -16,7 +16,7 @@ export function useShopTransactions(shopIds: string[], from?: Date | null) {
   return useQuery({
     queryKey: ["transactions", shopIds.slice().sort(), from?.toISOString() ?? "all"],
     enabled: shopIds.length > 0,
-    queryFn: () => fetchTransactions({ shopIds, from }),
+    queryFn: () => fetchTransactions({ shopIds, from: from ?? null }),
   });
 }
 
