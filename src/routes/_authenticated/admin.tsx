@@ -249,15 +249,29 @@ function AdminPage() {
                     {u.email ?? "—"} · {u.resident_area ?? "—"}
                   </p>
                 </div>
-                <span className="text-xs text-muted-foreground">
-                  {t(
-                    u.role === "admin"
-                      ? "profile.role.admin"
-                      : u.role === "owner"
-                        ? "profile.role.owner"
-                        : "profile.role.worker",
-                  )}
-                </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs text-muted-foreground">
+                    {t(
+                      u.role === "admin"
+                        ? "profile.role.admin"
+                        : u.role === "owner"
+                          ? "profile.role.owner"
+                          : "profile.role.worker",
+                    )}
+                  </span>
+                  {u.role !== "worker" &&
+                    PLANS.map((p) => (
+                      <Button
+                        key={p.id}
+                        size="sm"
+                        variant="outline"
+                        disabled={granting === u.id}
+                        onClick={() => void grant(u.id, p.id)}
+                      >
+                        {t("admin.grant")}: {t(p.nameKey)}
+                      </Button>
+                    ))}
+                </div>
               </li>
             ))}
           </ul>
