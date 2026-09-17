@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { GoogleButton } from "@/components/GoogleButton";
 import type { TranslationKey } from "@/i18n/translations";
 
 export const Route = createFileRoute("/login")({
