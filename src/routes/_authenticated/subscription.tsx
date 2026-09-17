@@ -78,15 +78,11 @@ function SubscriptionPage() {
       toast.error(t("sub.needProfile"));
       return;
     }
-    if (!idDoc || !receipt) {
-      toast.error(t("sub.needDocs"));
-      return;
-    }
     setBusy(true);
     try {
       const [idPath, receiptPath] = await Promise.all([
-        uploadTo("documents", profile.id, idDoc),
-        uploadTo("receipts", profile.id, receipt),
+        idDoc ? uploadTo("documents", profile.id, idDoc) : Promise.resolve(null),
+        receipt ? uploadTo("documents", profile.id, receipt) : Promise.resolve(null),
       ]);
       const { error } = await supabase.from("subscription_requests").insert({
         owner_id: profile.id,
