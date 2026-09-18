@@ -1,3 +1,4 @@
+import { Logo } from "@/components/Logo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useI18n } from "@/i18n";
 import { Button } from "@/components/ui/button";
@@ -26,7 +27,7 @@ function Pricing() {
     <div className="min-h-screen bg-background">
       <header className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-5">
         <Link to="/" className="flex items-center gap-2">
-          <span className="grid size-9 place-items-center rounded-xl gradient-teal font-bold">إ</span>
+          <Logo />
           <span className="font-bold">{t("app.name")}</span>
         </Link>
         <div className="ms-auto flex items-center gap-2">

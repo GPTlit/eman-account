@@ -1,3 +1,4 @@
+import { Logo } from "@/components/Logo";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -96,17 +97,6 @@ function RegisterPage() {
 
     setBusy(true);
 
-    const { data: existing } = await supabase
-      .from("profiles")
-      .select("id")
-      .ilike("username", form.username.trim())
-      .maybeSingle();
-    if (existing) {
-      setBusy(false);
-      toast.error(t("auth.usernameTaken"));
-      return;
-    }
-
     const { data, error } = await supabase.auth.signUp({
       email: form.email.trim(),
       password: form.password,
@@ -130,6 +120,19 @@ function RegisterPage() {
       return;
     }
 
+    if (!data.session) {
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: form.email.trim(),
+        password: form.password,
+      });
+      if (signInError) {
+        setBusy(false);
+        toast.success(t("auth.checkEmail"));
+        void navigate({ to: "/login", replace: true });
+        return;
+      }
+    }
+
     if (avatar && data.user) {
       try {
         const ref = await uploadTo("avatars", data.user.id, avatar);
@@ -148,7 +151,7 @@ function RegisterPage() {
       <div className="w-full max-w-xl">
         <div className="mb-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="grid size-9 place-items-center rounded-xl gradient-teal font-bold">إ</span>
+            <Logo />
             <span className="font-bold">{t("app.name")}</span>
           </Link>
           <LanguageSwitcher compact />

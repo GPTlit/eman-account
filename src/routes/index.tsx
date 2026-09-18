@@ -1,3 +1,4 @@
+import { Logo } from "@/components/Logo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BarChart3, Receipt, Store, Users } from "lucide-react";
 import { useI18n } from "@/i18n";
@@ -38,7 +39,7 @@ function Landing() {
   return (
     <div className="min-h-screen bg-background">
       <header className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-5">
-        <span className="grid size-9 place-items-center rounded-xl gradient-teal font-bold">إ</span>
+        <Logo />
         <span className="text-lg font-bold">{t("app.name")}</span>
         <div className="ms-auto flex items-center gap-2">
           <LanguageSwitcher compact />
