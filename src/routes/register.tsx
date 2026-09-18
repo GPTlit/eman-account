@@ -97,17 +97,6 @@ function RegisterPage() {
 
     setBusy(true);
 
-    const { data: existing } = await supabase
-      .from("profiles")
-      .select("id")
-      .ilike("username", form.username.trim())
-      .maybeSingle();
-    if (existing) {
-      setBusy(false);
-      toast.error(t("auth.usernameTaken"));
-      return;
-    }
-
     const { data, error } = await supabase.auth.signUp({
       email: form.email.trim(),
       password: form.password,
