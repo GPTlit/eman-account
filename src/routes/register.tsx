@@ -120,6 +120,19 @@ function RegisterPage() {
       return;
     }
 
+    if (!data.session) {
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: form.email.trim(),
+        password: form.password,
+      });
+      if (signInError) {
+        setBusy(false);
+        toast.success(t("auth.checkEmail"));
+        void navigate({ to: "/login", replace: true });
+        return;
+      }
+    }
+
     if (avatar && data.user) {
       try {
         const ref = await uploadTo("avatars", data.user.id, avatar);
