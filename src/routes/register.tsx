@@ -1,3 +1,4 @@
+import { Logo } from "@/components/Logo";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -148,7 +149,7 @@ function RegisterPage() {
       <div className="w-full max-w-xl">
         <div className="mb-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="grid size-9 place-items-center rounded-xl gradient-teal font-bold">إ</span>
+            <Logo />
             <span className="font-bold">{t("app.name")}</span>
           </Link>
           <LanguageSwitcher compact />

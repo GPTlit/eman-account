@@ -1,3 +1,4 @@
+import { Logo } from "@/components/Logo";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import {
@@ -122,7 +123,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 hidden w-64 flex-col border-e border-sidebar-border bg-sidebar p-4 lg:flex ltr:left-0 rtl:right-0">
         <Link to="/dashboard" className="mb-6 flex items-center gap-2 px-2">
-          <span className="grid size-9 place-items-center rounded-xl gradient-teal font-bold">إ</span>
+          <Logo />
           <span className="text-lg font-bold">{t("app.name")}</span>
         </Link>
         <NavLinks />
